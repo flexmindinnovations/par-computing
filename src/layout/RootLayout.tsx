@@ -1,35 +1,84 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { Transition } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import Header from '@/components/Header';
-import { Outlet } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+
+const pageVariants = {
+    initial: {
+        opacity: 0,
+        y: 20,
+    },
+    in: {
+        opacity: 1,
+        y: 0,
+    },
+    out: {
+        opacity: 0,
+        y: -20,
+    },
+};
+
+const pageTransition: Transition = {
+    type: 'tween',
+    ease: 'anticipate',
+    duration: 0.5,
+};
 
 export default function RootLayout() {
+    const location = useLocation();
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div className="min-h-screen w-full relative grid grid-cols-[250px_1fr]">
-            {/* Hamburger button for small screens */}
-            <button
-                className="fixed rounded-full top-4 right-4 z-50 md:hidden bg-background p-2    shadow"
-                onClick={() => setSidebarOpen((open) => !open)}
-                aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
-            >
-                {sidebarOpen ? <X className="w-6 h-6 rounded-full transition-transform duration-200" /> : <Menu className="w-6 h-6 transition-transform duration-200" />}
-            </button>
-
+        <div className="relative min-h-screen w-full bg-background text-foreground md:grid md:grid-cols-[280px_1fr]">
             {/* Desktop Sidebar */}
-            <div className="max-w-72 shadow-lg rounded-2xl border border-gray-400 h-auto p-2 m-auto sticky left-5 z-10 lg:flex justify-center hidden md:flex">
+            <div className="hidden md:flex md:items-center p-2 sticky top-0 left-2 h-screen">
                 <Header />
             </div>
-            {/* Mobile Sidebar Overlay */}
-            {sidebarOpen && (
-                <div className="fixed inset-0 z-40 md:hidden">
-                    <Header open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-                </div>
-            )}
-            {/* Main content */}
-            <main className="w-full h-full">
-                <Outlet />
+
+            {/* Mobile Header & Hamburger Button */}
+            <div className="md:hidden fixed top-0 left-0 right-0 z-20 flex justify-end items-center p-4 bg-background/80 backdrop-blur-sm">
+                <button
+                    type="button"
+                    className="z-50"
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                    aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
+                >
+                    {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+            </div>
+            
+            {/* Mobile Sidebar (off-canvas) */}
+            <AnimatePresence>
+                {sidebarOpen && (
+                    <motion.div
+                        className="fixed inset-0 z-40 md:hidden"
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '-100%' }}
+                        transition={{ type: 'tween', ease: 'circOut', duration: 0.3 }}
+                    >
+                         <div className="w-72 h-full p-2">
+                            <Header open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <main className="flex-1 overflow-y-auto p-8 pt-20 md:pt-8 md:flex-initial">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={location.pathname}
+                        initial="initial"
+                        animate="in"
+                        exit="out"
+                        variants={pageVariants}
+                        transition={pageTransition}
+                    >
+                        <Outlet />
+                    </motion.div>
+                </AnimatePresence>
             </main>
         </div>
     );
