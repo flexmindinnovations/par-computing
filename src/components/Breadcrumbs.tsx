@@ -18,7 +18,7 @@ const Breadcrumbs = () => {
     };
 
     return (
-        <nav className="flex items-center text-sm text-muted-foreground mb-6" aria-label="Breadcrumb">
+        <nav className="flex items-center text-sm text-muted-foreground mt-2 mb-4 px-4" aria-label="Breadcrumb">
             <NavLink to="/" className="hover:text-foreground">Home</NavLink>
             {pathnames.map((name, index) => {
                 const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;

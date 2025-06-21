@@ -1,6 +1,10 @@
-import { motion } from 'framer-motion';
 import { Award, Handshake, Lightbulb, Users, ShieldCheck, Truck, Headphones, ThumbsUp } from 'lucide-react';
 import AnimatedPage from '@/components/AnimatedPage';
+import PageHero from '@/components/PageHero';
+import PageMetadata from '@/components/PageMetadata';
+import ScrollAnimator from '@/components/ScrollAnimator';
+
+const emojiFavicon = (emoji: string) => `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${emoji}</text></svg>`;
 
 const values = [
     { name: 'Excellence', description: "It's what differentiates us. It's not easy, but one can't achieve excellence with ease.", icon: Award },
@@ -19,70 +23,66 @@ const whyChooseUs = [
 export default function AboutPage() {
     return (
         <AnimatedPage>
-            <div className="bg-transparent text-foreground">
-                {/* About Section */}
-                <motion.section
-                    className="py-16 px-4 text-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">About PAR Computing</h1>
-                    <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
-                        Founded in 2007, PAR Computing Solutions Pvt Ltd has a dedicated team of professionals with over 10 years of experience in IT Infrastructure Management. We strive for incremental satisfaction by shaping the right business strategies to deliver opportunities in a competitive environment through a process-oriented approach.
-                    </p>
-                </motion.section>
+            <PageMetadata title="About | PAR Computing" faviconHref={emojiFavicon('👥')} />
+            <PageHero
+                title="About PAR Computing"
+                subtitle="A decade of dedication, excellence, and innovation in IT infrastructure."
+                imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+            />
+            <div className="px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16">
+                <div className="bg-transparent text-foreground space-y-16">
+                    {/* About Section */}
+                    <ScrollAnimator>
+                        <section className="py-12 px-4 md:px-8 lg:px-16 text-center bg-card/40 rounded-2xl shadow-lg max-w-4xl mx-auto border border-border/60 hover:border-primary/80 transition-all duration-300 group">
+                            <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
+                                Founded in 2007, PAR Computing Solutions Pvt Ltd has a dedicated team of professionals with over 10 years of experience in IT Infrastructure Management. We strive for incremental satisfaction by shaping the right business strategies to deliver opportunities in a competitive environment through a process-oriented approach.
+                            </p>
+                        </section>
+                    </ScrollAnimator>
 
-                {/* Core Values Section */}
-                <section className="py-16 bg-card/40 rounded-2xl">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Our Core Values</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {values.map((value, index) => (
-                                <motion.div
-                                    key={value.name}
-                                    className="p-6 bg-card/80 backdrop-blur-md rounded-xl shadow-lg text-center border border-border"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <value.icon className="w-12 h-12 mx-auto text-primary mb-4" />
-                                    <h3 className="text-xl font-semibold mb-2">{value.name}</h3>
-                                    <p className="text-muted-foreground">{value.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Why Choose Us Section */}
-                <section className="py-20">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Why Choose Us?</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {whyChooseUs.map((reason, index) => (
-                                <motion.div
-                                    key={reason.title}
-                                    className="flex items-start gap-4"
-                                    initial={{ opacity: 0, x: -50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.2 }}
-                                >
-                                    <div className="flex-shrink-0">
-                                        <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-foreground">
-                                            <reason.icon className="h-6 w-6" />
+                    {/* Core Values Section */}
+                    <ScrollAnimator>
+                        <section className="py-16 bg-card/40 rounded-2xl shadow-lg border border-border/60 hover:border-primary/80 transition-all duration-300 group">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Our Core Values</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    {values.map((value) => (
+                                        <div
+                                            className="rounded-xl bg-card/80 p-6 border border-border/60 hover:border-primary/80 transition-all duration-300 group shadow-md flex flex-col items-center"
+                                            key={value.name}
+                                        >
+                                            <value.icon className="w-10 h-10 text-primary mb-4" />
+                                            <h3 className="text-xl font-semibold mb-2 gradient-text">{value.name}</h3>
+                                            <p className="text-muted-foreground">{value.description}</p>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-medium">{reason.title}</h3>
-                                        <p className="mt-1 text-muted-foreground">{reason.description}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    </ScrollAnimator>
+
+                    {/* Why Choose Us Section */}
+                    <ScrollAnimator>
+                        <section className="py-16 px-4 md:px-8 lg:px-16 bg-card/60 rounded-2xl shadow-lg mt-8 border border-border/60 hover:border-primary/80 transition-all duration-300 group">
+                            <div className="max-w-5xl mx-auto">
+                                <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Why Choose Us</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    {whyChooseUs.map((item) => (
+                                        <div
+                                            className="rounded-xl bg-card/80 p-6 border border-border/60 hover:border-primary/80 transition-all duration-300 group shadow-md flex flex-col items-center"
+                                            key={item.title}
+                                        >
+                                            <item.icon className="w-10 h-10 text-primary mb-4" />
+                                            <h3 className="text-xl font-semibold mb-2 gradient-text">{item.title}</h3>
+                                            <p className="text-muted-foreground">{item.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    </ScrollAnimator>
+                </div>
             </div>
         </AnimatedPage>
     );
-} 
+}

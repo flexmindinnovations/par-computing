@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
@@ -14,15 +15,30 @@ const CareersPage = lazy(() => import('@/pages/CareersPage'));
 const ContactUsPage = lazy(() => import('@/pages/ContactUsPage'));
 const PageNotFound = lazy(() => import('@/pages/PageNotFound'));
 
+// Solution Sub-Pages
+const SolutionDetailPage = lazy(() => import('@/pages/solutions/SolutionDetailPage'));
+
 function App() {
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setShowLoader(false), 1200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (showLoader) {
+    return <AppLoader />;
+  }
+
   return (
     <Router>
-      <Suspense fallback={<AppLoader />}>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="solution" element={<SolutionPage />} />
+            <Route path="solution/:solutionId" element={<SolutionDetailPage />} />
             <Route path="industries" element={<IndustriesPage />} />
             <Route path="partners" element={<PartnersPage />} />
             <Route path="careers" element={<CareersPage />} />
