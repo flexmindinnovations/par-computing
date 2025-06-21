@@ -1,7 +1,6 @@
 import { useState, cloneElement } from 'react';
 import { useLocation, useOutlet } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import Header from '@/components/Header';
 import NoiseBackground from '@/components/ui/DotPattern';
 import Breadcrumbs from '@/components/Breadcrumbs';
