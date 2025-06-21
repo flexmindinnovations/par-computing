@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
+import RootLayout from './layout/RootLayout';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const SolutionPage = lazy(() => import('@/pages/SolutionPage'));
+const IndustriesPage = lazy(() => import('@/pages/IndustriesPage'));
+const PartnersPage = lazy(() => import('@/pages/PartnersPage'));
+const CareersPage = lazy(() => import('@/pages/CareersPage'));
+const ContactUsPage = lazy(() => import('@/pages/ContactUsPage'));
+const PageNotFound = lazy(() => import('@/pages/PageNotFound'));
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="solution" element={<SolutionPage />} />
+          <Route path="industries" element={<IndustriesPage />} />
+          <Route path="partners" element={<PartnersPage />} />
+          <Route path="careers" element={<CareersPage />} />
+          <Route path="contact" element={<ContactUsPage />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
