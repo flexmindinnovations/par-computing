@@ -22,13 +22,16 @@ export function ThemeToggle() {
             onValueChange={val => val && setTheme(val as Theme)}
             className="gap-0"
         >
-            {themes.map(({ value, icon: Icon, label }) => (
+            {themes.map(({ value, icon: Icon, label }, idx) => (
                 <Tooltip key={value}>
                     <TooltipTrigger asChild>
                         <ToggleGroupItem
                             value={value}
                             aria-label={label}
-                            className={`min-w-14 ${theme === value ? 'bg-primary hover:bg-primary text-primary-foreground hover:text-primary-foreground' : ''}`}
+                            className={`min-w-14
+                                ${idx === 0 ? 'rounded-s-full' : ''}
+                                ${idx === themes.length - 1 ? 'rounded-e-full' : ''}
+                                ${theme === value ? 'bg-primary hover:bg-primary text-primary-foreground hover:text-primary-foreground' : ''}`}
                         >
                             <Icon className="h-[1.2rem] w-[1.2rem]" />
                         </ToggleGroupItem>
