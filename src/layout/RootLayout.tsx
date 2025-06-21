@@ -25,13 +25,13 @@ export default function RootLayout() {
     };
 
     return (
-        <div className="relative min-h-screen w-full text-foreground flex flex-col ">
+        <div className="relative min-h-screen w-full text-foreground flex flex-col">
             <NoiseBackground />
             <header className="w-full sticky top-0 left-0 z-10 bg-card/60 backdrop-blur-lg">
                 <Header />
             </header>
             {/* Main content, no extra top padding needed for sticky header */}
-            <div className="flex flex-1 w-full overflow-y-auto">
+            <div className="flex flex-1 w-full">
                 <AnimatePresence>
                     {sidebarOpen && (
                         <motion.div
@@ -50,7 +50,7 @@ export default function RootLayout() {
 
                 {/* Main Content */}
                 <div className="flex flex-col flex-1 overflow-hidden">
-                    <main className="w-full flex-1 overflow-hidden box-border md:flex-initial overflow-y-auto">
+                    <main className="w-full flex-1 overflow-hidden box-border md:flex-initial">
                         {/* <Breadcrumbs /> */}
                         <AnimatePresence mode="wait">
                             {outlet && cloneElement(outlet, { key: location.pathname })}
