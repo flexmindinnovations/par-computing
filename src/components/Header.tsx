@@ -11,7 +11,6 @@ import {
     BriefcaseIcon,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "@/components/ThemeProvider";
 import LogoLight from '@/assets/logo.png';
 import whiteLogo from '@/assets/new-logo.png';
@@ -100,9 +99,6 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
                     );
                 })}
             </nav>
-            <div className="mt-12 scale-125">
-                <ThemeToggle />
-            </div>
         </motion.div>
     );
 
@@ -155,9 +151,6 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
                         );
                     })}
                 </motion.ul>
-                <div className="flex justify-center md:justify-end items-center mt-2 md:mt-0 md:ml-4">
-                    <ThemeToggle />
-                </div>
             </nav>
             {/* Mobile menu overlay */}
             {mobileOpen && MobileMenu}
