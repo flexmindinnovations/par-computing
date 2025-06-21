@@ -1,3 +1,9 @@
+import AnimatedPage from '@/components/AnimatedPage';
+
 export default function CareersPage() {
-  return <div>Careers Page</div>;
+  return (
+    <AnimatedPage>
+        <div>Careers Page</div>
+    </AnimatedPage>
+  );
 } 

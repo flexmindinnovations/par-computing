@@ -51,12 +51,12 @@ function getResolvedTheme(theme: string) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Header({ open: _open, onClose: _onClose }: { open?: boolean; onClose?: () => void }) {
+export default function Header({ onClose }: { open?: boolean; onClose?: () => void }) {
     const { theme } = useTheme();
     const resolvedTheme = typeof window !== 'undefined' ? getResolvedTheme(theme) : 'light';
     const logoSrc = resolvedTheme === 'dark' ? whiteLogo : LogoLight;
     return (
-        <aside className="w-full h-auto bg-card z-50 flex flex-col justify-between rounded-2xl border shadow-lg overflow-x-hidden">
+        <aside className="relative w-full h-auto bg-card/60 backdrop-blur-lg z-50 flex flex-col justify-between rounded-2xl border shadow-lg overflow-x-hidden">
             <nav className="flex flex-col items-center justify-center w-full h-full m-auto gap-2 py-2">
                 <motion.div
                     className="text-2xl font-bold text-transparent bg-clip-text select-none"
@@ -82,6 +82,7 @@ export default function Header({ open: _open, onClose: _onClose }: { open?: bool
                             <motion.li key={link.label} variants={itemVariants}>
                                 <NavLink
                                     to={link.href}
+                                    onClick={onClose}
                                     className={({ isActive }) =>
                                         `flex flex-row items-center justify-start gap-3 px-5 py-2 rounded-full text-sm font-medium min-w-[180px] max-w-[220px] w-full
                     ${isActive

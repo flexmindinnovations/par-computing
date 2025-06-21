@@ -1,47 +1,28 @@
-import { useState } from 'react';
-import { useLocation, Outlet } from 'react-router-dom';
+import { useState, cloneElement } from 'react';
+import { useLocation, useOutlet } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import type { Transition } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Header from '@/components/Header';
-
-const pageVariants = {
-    initial: {
-        opacity: 0,
-        y: 20,
-    },
-    in: {
-        opacity: 1,
-        y: 0,
-    },
-    out: {
-        opacity: 0,
-        y: -20,
-    },
-};
-
-const pageTransition: Transition = {
-    type: 'tween',
-    ease: 'anticipate',
-    duration: 0.5,
-};
+import DotPattern from '@/components/ui/DotPattern';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function RootLayout() {
     const location = useLocation();
+    const outlet = useOutlet();
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
         <div className="relative min-h-screen w-full bg-background text-foreground md:grid md:grid-cols-[280px_1fr]">
+            <DotPattern />
             {/* Desktop Sidebar */}
-            <div className="hidden md:flex md:items-center p-2 sticky top-0 left-2 h-screen">
+            <div className="hidden md:flex md:items-center p-2 sticky top-0 h-screen">
                 <Header />
             </div>
 
             {/* Mobile Header & Hamburger Button */}
-            <div className="md:hidden fixed top-0 left-0 right-0 z-20 flex justify-end items-center p-4 bg-background/80 backdrop-blur-sm">
+            <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex justify-end items-center p-4">
                 <button
                     type="button"
-                    className="z-50"
                     onClick={() => setSidebarOpen(!sidebarOpen)}
                     aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
                 >
@@ -67,17 +48,9 @@ export default function RootLayout() {
             </AnimatePresence>
 
             <main className="flex-1 overflow-y-auto p-8 pt-20 md:pt-8 md:flex-initial">
+                <Breadcrumbs />
                 <AnimatePresence mode="wait">
-                    <motion.div
-                        key={location.pathname}
-                        initial="initial"
-                        animate="in"
-                        exit="out"
-                        variants={pageVariants}
-                        transition={pageTransition}
-                    >
-                        <Outlet />
-                    </motion.div>
+                    {outlet && cloneElement(outlet, { key: location.pathname })}
                 </AnimatePresence>
             </main>
         </div>

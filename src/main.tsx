@@ -1,13 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { ThemeProvider } from '@/components/ThemeProvider.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <ThemeProvider defaultTheme='system' storageKey='ui-theme'>
       <App />
     </ThemeProvider>
-  </StrictMode>,
+  </React.StrictMode>,
 )

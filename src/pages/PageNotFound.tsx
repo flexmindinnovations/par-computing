@@ -1,7 +1,9 @@
+import AnimatedPage from '@/components/AnimatedPage';
+
 export default function PageNotFound() {
     return (
-        <div>
-            <h1>PageNotFound</h1>
-        </div>
+        <AnimatedPage>
+            <div>Page Not Found</div>
+        </AnimatedPage>
     )
 }

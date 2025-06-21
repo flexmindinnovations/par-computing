@@ -1,61 +1,90 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
+import { ArrowRightIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
+import DotPattern from '@/components/ui/DotPattern';
 
 const slides = [
   {
-    title: 'Empowering IT Solutions for Modern Businesses',
-    description: 'PAR Computing delivers end-to-end IT infrastructure, cloud, and security solutions.',
-    cta: 'Get a Free Consultation',
-    bg: 'from-primary via-purple-500 to-cyan-400',
+    title: 'We work with you to address your most critical business priorities',
+    description: 'PAR Computing provides end-to-end & Turnkey Infrastructure Solutions, founded in 2007 with a team of dedicated Professionals.',
+    cta: 'Get a Quote',
+    bg: 'from-blue-950 via-slate-900 to-black',
   },
   {
-    title: 'Networking, Cloud, Security & More',
-    description: 'Explore our full suite of services for every industry need.',
-    cta: 'Our Solutions',
-    bg: 'from-cyan-500 via-blue-600 to-primary',
+    title: 'Creating Solutions for Your Organization',
+    description: 'We serve a wide range of industries including Banking, Education, Healthcare, and Manufacturing.',
+    cta: 'Our Industries',
+    bg: 'from-purple-950 via-slate-900 to-black',
   },
   {
-    title: 'Trusted by Leading Partners',
-    description: 'Join our network of satisfied clients and partners.',
-    cta: 'See Partners',
-    bg: 'from-pink-500 via-primary to-blue-400',
+    title: 'Excellence, Dedication, & Innovation',
+    description: 'These are the core values that differentiate us and elevate the benchmark of our company.',
+    cta: 'About Us',
+    bg: 'from-slate-900 via-cyan-950 to-black',
   },
 ];
 
 export default function HeroSection() {
   return (
-    <div className="w-full max-w-5xl mt-8">
-      <Swiper
-        modules={[EffectFade, Autoplay, Pagination]}
-        effect="fade"
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
-        loop
-        className="rounded-3xl shadow-2xl overflow-hidden"
-      >
-        {slides.map((slide, idx) => (
-          <SwiperSlide key={idx}>
-            <section className={`min-h-[340px] md:min-h-[420px] flex flex-col justify-center items-center bg-gradient-to-br ${slide.bg} relative overflow-hidden px-6 py-12 transition-all duration-700`}>
-              {/* Dot/Noise Pattern Overlay Placeholder */}
-              <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-                {/* TODO: Add SVG or CSS noise/dot pattern here */}
-              </div>
-              <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 text-center z-10">
-                {slide.title}
-              </h1>
-              <p className="mt-6 text-lg md:text-2xl text-white/80 max-w-2xl text-center z-10">
-                {slide.description}
-              </p>
-              <button className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-semibold shadow-lg hover:scale-105 transition-transform z-10">
-                {slide.cta}
-              </button>
-            </section>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <>
+      <style>{`
+        .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background-color: rgba(255, 255, 255, 0.5);
+          opacity: 0.8;
+          transition: all 0.2s ease;
+        }
+        .swiper-pagination-bullet-active {
+          width: 25px;
+          border-radius: 5px;
+          background-color: white;
+        }
+      `}</style>
+      <div className="w-full max-w-6xl mt-8">
+        <Swiper
+          modules={[EffectFade, Autoplay, Pagination]}
+          effect="fade"
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          loop
+          className="rounded-3xl shadow-2xl overflow-hidden"
+        >
+          {slides.map((slide, idx) => (
+            <SwiperSlide key={idx}>
+              <section className={`min-h-[400px] md:min-h-[480px] flex flex-col justify-center items-center bg-gradient-to-br ${slide.bg} relative overflow-hidden px-6 py-12`}>
+                <DotPattern />
+                <motion.h1 
+                    className="text-4xl md:text-6xl font-bold text-white text-center z-10 max-w-3xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                >
+                  {slide.title}
+                </motion.h1>
+                <motion.p 
+                    className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl text-center z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  {slide.description}
+                </motion.p>
+                <motion.button 
+                    className="mt-10 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold shadow-lg hover:bg-white/20 transition-all group flex items-center gap-2 z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                >
+                  {slide.cta}
+                  <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </motion.button>
+              </section>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
   );
 } 
