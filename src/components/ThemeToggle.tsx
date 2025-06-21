@@ -29,8 +29,8 @@ export function ThemeToggle() {
                             value={value}
                             aria-label={label}
                             className={`min-w-14
-                                ${idx === 0 ? 'rounded-s-full' : ''}
-                                ${idx === themes.length - 1 ? 'rounded-e-full' : ''}
+                                ${idx === 0 ? '!rounded-s-full' : ''}
+                                ${idx === themes.length - 1 ? '!rounded-e-full' : ''}
                                 ${theme === value ? 'bg-primary hover:bg-primary text-primary-foreground hover:text-primary-foreground' : ''}`}
                         >
                             <Icon className="h-[1.2rem] w-[1.2rem]" />
