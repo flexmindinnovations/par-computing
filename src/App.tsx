@@ -32,7 +32,7 @@ function App() {
 
   return (
     <Router>
-      <Suspense fallback={null}>
+      <Suspense fallback={<AppLoader />}>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<HomePage />} />
