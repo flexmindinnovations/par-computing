@@ -107,7 +107,7 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
     );
 
     return (
-        <header className="w-full bg-card/60 backdrop-blur-lg z-[100] flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 border-b relative">
+        <header className="w-full h-20 md:h-24 flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 border-b bg-transparent">
             {/* Hamburger icon for mobile */}
             <div className="absolute left-4 top-4 md:hidden z-[1001]">
                 {HamburgerIcon}
@@ -122,7 +122,7 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
                 <img
                     src={logoSrc}
                     alt="PAR Computing Logo"
-                    className="logo h-16 md:h-20 w-auto object-contain"
+                    className="logo h-12 md:h-16 w-auto object-contain transition-all duration-200"
                 />
             </motion.div>
             {/* Desktop nav */}
@@ -141,7 +141,7 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
                                 <NavLink
                                     to={link.href}
                                     onClick={onClose}
-                                    className={`flex flex-row items-center justify-start md:justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium w-full md:w-auto ${isActive
+                                    className={`flex flex-row items-center justify-start md:justify-center gap-2 px-3 py-2 rounded-full text-base font-medium w-full md:w-auto ${isActive
                                         ? "bg-primary text-primary-foreground shadow"
                                         : "text-muted-foreground hover:bg-zinc-100 hover:text-foreground dark:hover:text-white dark:hover:bg-zinc-800"}`}
                                     style={{
