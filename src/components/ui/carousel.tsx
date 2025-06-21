@@ -234,7 +234,6 @@ const CarouselNext = React.forwardRef<
       size={size}
       className={cn(
         "absolute h-8 w-8 rounded-full",
-        "absolute h-8 w-8 rounded-full",
         className
       )}
       disabled={!canScrollNext}
