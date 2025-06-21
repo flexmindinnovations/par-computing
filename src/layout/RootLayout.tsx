@@ -3,7 +3,6 @@ import { useLocation, useOutlet } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from '@/components/Header';
 import NoiseBackground from '@/components/ui/DotPattern';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 
 export default function RootLayout() {
