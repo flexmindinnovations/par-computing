@@ -12,8 +12,8 @@ export default function ScrollAnimator({ children, className, delay = 0 }: Scrol
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+    visible: { opacity: 1, transform: "translate3d(0, 0, 0)" },
   };
 
   return (

@@ -72,14 +72,14 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`fixed inset-0 z-[999] flex flex-col items-center justify-center md:hidden transition-all duration-300
-                ${theme === 'dark' ? 'bg-zinc-900/95' : 'bg-zinc-100/95'}
-            `}
+            className={`fixed inset-0 z-[999] flex flex-col items-center justify-center md:hidden transition-all duration-300 ${
+                theme === "dark" ? "bg-zinc-900/95" : "bg-zinc-100/95"
+            }`}
         >
             <img
                 src={logoSrc}
                 alt="PAR Computing Logo"
-                className="h-16 w-auto mb-8 drop-shadow-lg"
+                className="h-16 aspect-square w-28 object-contain mb-8 drop-shadow-lg"
             />
             <nav className="flex flex-col gap-8 items-center w-full">
                 {navLinks.map((link) => {
@@ -103,48 +103,50 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
     );
 
     return (
-        <header className="w-full h-20 md:h-24 flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 border-b bg-transparent">
-            {/* Hamburger icon for mobile */}
-            <div className="absolute left-4 top-4 md:hidden z-[1001]">
-                {HamburgerIcon}
-            </div>
+        <header className="fixed top-0 left-0 right-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-8 border-b bg-background/80 backdrop-blur-sm">
             {/* Logo */}
             <motion.div
-                className="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0"
-                initial={{ opacity: 0, y: -30 }}
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <img
                     src={logoSrc}
                     alt="PAR Computing Logo"
-                    className="logo h-12 md:h-16 w-auto object-contain transition-all duration-200"
+                    className="h-16 aspect-square w-28 object-contain drop-shadow-lg"
                 />
             </motion.div>
+
+            {/* Hamburger icon for mobile */}
+            <div className="md:hidden z-[1001]">{HamburgerIcon}</div>
+
             {/* Desktop nav */}
-            <nav className="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto gap-2 md:gap-4">
+            <nav className="hidden md:flex items-center">
                 <motion.ul
-                    className="flex flex-col md:flex-row w-full md:w-auto gap-2 md:gap-4 items-center justify-center"
+                    className="flex items-center gap-6"
                     variants={listVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     {navLinks.map((link) => {
                         const Icon = link.icon;
-                        const isActive = location.pathname === '/' ? location.pathname === link.href : location.pathname.startsWith(link.href) && link.href !== '/';
+                        const isActive =
+                            location.pathname === "/"
+                                ? location.pathname === link.href
+                                : location.pathname.startsWith(link.href) &&
+                                  link.href !== "/";
                         return (
-                            <motion.li key={link.label} variants={itemVariants} className="w-full md:w-auto">
+                            <motion.li key={link.label} variants={itemVariants}>
                                 <NavLink
                                     to={link.href}
                                     onClick={onClose}
-                                    className={`flex flex-row items-center justify-start md:justify-center gap-2 px-3 py-2 rounded-full text-base font-medium w-full md:w-auto ${isActive
-                                        ? "bg-primary text-primary-foreground shadow"
-                                        : "text-muted-foreground hover:bg-zinc-100 hover:text-foreground dark:hover:text-white dark:hover:bg-zinc-800"}`}
-                                    style={{
-                                        transition: 'background 0.2s, color 0.2s, fill 0.2s',
-                                    }}
+                                    className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-colors ${
+                                        isActive
+                                            ? "bg-foreground text-background shadow"
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
                                 >
-                                    <Icon className="w-5 h-5" />
+                                    <Icon className="w-4 h-4" />
                                     <span>{link.label}</span>
                                 </NavLink>
                             </motion.li>
@@ -152,6 +154,7 @@ export default function Header({ onClose }: { open?: boolean; onClose?: () => vo
                     })}
                 </motion.ul>
             </nav>
+
             {/* Mobile menu overlay */}
             {mobileOpen && MobileMenu}
         </header>
