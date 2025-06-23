@@ -1,6 +1,7 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 
-export function DotPattern({
+const DotPattern = React.memo(function DotPattern({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
@@ -28,6 +29,6 @@ export function DotPattern({
       </svg>
     </div>
   );
-}
+});
 
 export default DotPattern; 

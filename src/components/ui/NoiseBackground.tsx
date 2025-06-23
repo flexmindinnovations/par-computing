@@ -1,4 +1,6 @@
-const NoiseBackground = () => (
+import React from "react";
+
+const NoiseBackground = React.memo(() => (
     <div className="absolute inset-0 h-full w-full pointer-events-none -z-10">
         {/* Glassmorphism overlay with noise */}
         <div
@@ -12,6 +14,6 @@ const NoiseBackground = () => (
             }}
         />
     </div>
-);
+));
 
 export default NoiseBackground; 

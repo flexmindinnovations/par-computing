@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css'
+import './App.css';
 import RootLayout from './layout/RootLayout';
 import AppLoader from './components/AppLoader';
 
@@ -22,7 +22,7 @@ function App() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setShowLoader(false), 1200);
+    const timeout = setTimeout(() => setShowLoader(false), 800);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -51,4 +51,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

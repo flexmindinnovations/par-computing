@@ -13,23 +13,21 @@ const emojiFavicon = (emoji: string) => `data:image/svg+xml,<svg xmlns=%22http:/
 
 const HomePage = () => {
     return (
-        <>
+        <div className="w-full">
             <PageMetadata
                 title="Par-Computing - Empowering Your Digital Future"
                 faviconHref={emojiFavicon('🏠')}
             />
             <HeroSection />
-            <main className="relative z-10 bg-background will-change-transform">
-                <SolutionCarousel />
-                <AboutSection />
-                <IndustriesSection />
-                <WhyChooseUsSection />
-                <HowItWorksSection />
-                <TestimonialsSection />
-                <PartnersSection />
-                <ContactSection />
-            </main>
-        </>
+            <SolutionCarousel />
+            <AboutSection />
+            <IndustriesSection />
+            <WhyChooseUsSection />
+            <HowItWorksSection />
+            <TestimonialsSection />
+            <PartnersSection />
+            <ContactSection />
+        </div>
     );
 };
 

@@ -1,87 +1,176 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { whyChooseUsData } from "@/lib/home-page-data";
 import { Award, Gem, Handshake, ShieldCheck } from "lucide-react";
-import ScrollAnimator from "./ScrollAnimator";
-import NoiseBackground from "./ui/NoiseBackground";
-import DotPattern from "./ui/DotPattern";
 
 const valueIcons: Record<string, React.ReactNode> = {
-    Excellence: <Award className="w-8 h-8 text-primary" />,
-    Dedication: <Gem className="w-8 h-8 text-primary" />,
-    Innovation: <Handshake className="w-8 h-8 text-primary" />,
-    Trust: <ShieldCheck className="w-8 h-8 text-primary" />,
+    Excellence: <Award className="w-8 h-8" />,
+    Dedication: <Gem className="w-8 h-8" />,
+    Innovation: <Handshake className="w-8 h-8" />,
+    Trust: <ShieldCheck className="w-8 h-8" />,
 };
 
 const WhyChooseUsSection = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: false, margin: "-100px" });
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.1,
+            },
+        },
+    };
+
+    const featureVariants = {
+        hidden: { 
+            opacity: 0, 
+            x: -50,
+            scale: 0.9,
+        },
+        visible: { 
+            opacity: 1, 
+            x: 0,
+            scale: 1,
+            transition: {
+                type: "spring" as const,
+                stiffness: 100,
+                damping: 15,
+            },
+        },
+    };
+
     return (
-        <section className="bg-background relative overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <NoiseBackground />
-                <DotPattern />
-            </div>
-            <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24 relative z-10">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-3xl font-extrabold sm:text-4xl">
-                        {whyChooseUsData.title}
+        <section ref={ref} className="py-20 sm:py-32 relative overflow-hidden">
+            {/* Modern gradient background */}
+            <div className="absolute inset-0 bg-[var(--gradient-background)]" />
+            
+            {/* Floating elements */}
+            <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                    className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl"
+                    animate={{
+                        y: [-20, 20, -20],
+                        rotate: [0, 360],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
+                <motion.div
+                    className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-xl"
+                    animate={{
+                        y: [20, -20, 20],
+                        rotate: [360, 0],
+                    }}
+                    transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
+            </div>            <div className="container mx-auto px-4 relative z-10">
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        Why Choose{" "}
+                        <span className="gradient-text">Us</span>
                     </h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
+                        {whyChooseUsData.subtitle}
+                    </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                     {/* Left side image */}
-                    <ScrollAnimator>
-                        <div className="relative">
-                            <div className="absolute top-0 left-0 w-full h-4 bg-primary" />
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative group"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-purple-400/20 rounded-3xl blur-2xl group-hover:blur-xl transition-all duration-500" />
+                        <div className="relative bg-[var(--glassmorphism)] backdrop-blur-xl rounded-3xl p-2 border border-[var(--glassmorphism-border)]">
                             <img
                                 src={whyChooseUsData.imageUrl}
                                 alt="Why Choose Us"
-                                className="w-full h-auto object-cover"
+                                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
                             />
                         </div>
-                    </ScrollAnimator>
+                    </motion.div>
 
                     {/* Right side content */}
-                    <ScrollAnimator>
-                        <h4 className="text-primary font-bold uppercase tracking-wide mb-3">
-                            {whyChooseUsData.subtitle}
-                        </h4>
-                        <h2 className="text-3xl lg:text-4xl font-bold mb-8">
-                            {whyChooseUsData.title}
-                        </h2>
-                        <ul className="space-y-8">
-                            {whyChooseUsData.features.map((feature) => (
-                                <li key={feature.id} className="flex items-start gap-6">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-lg">
-                                        {feature.id}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                                        <p className="text-muted-foreground">{feature.description}</p>
-                                    </div>
-                                </li>
-                            ))}
-                             <li className="flex items-start gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-lg">
-                                    <ShieldCheck />
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        className="space-y-8"
+                    >
+                        {whyChooseUsData.features.map((feature) => (
+                            <motion.div
+                                key={feature.id}
+                                variants={featureVariants}
+                                whileHover={{ scale: 1.02, x: 10 }}
+                                className="flex items-start gap-6 group cursor-pointer"
+                            >
+                                <motion.div 
+                                    className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-400 text-[var(--primary-foreground)] font-bold text-lg shadow-lg group-hover:shadow-teal-400/25 transition-all duration-300"
+                                    whileHover={{ rotate: 10, scale: 1.1 }}
+                                >
+                                    {feature.id}
+                                </motion.div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                                        {feature.description}
+                                    </p>
                                 </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold mb-2">{whyChooseUsData.certification.title}</h3>
-                                    <p className="text-muted-foreground">{whyChooseUsData.certification.description}</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </ScrollAnimator>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
 
-                {/* Values Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Values Grid */}
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
                     {whyChooseUsData.values.map((value) => (
-                        <ScrollAnimator key={value.title} className="text-center p-6 bg-card rounded-lg shadow-md border">
-                            <div className="inline-block p-4 bg-primary/10 rounded-full mb-4">
+                        <motion.div
+                            key={value.title}                            whileHover={{ y: -5, scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="glass-card text-center p-6 bg-[var(--glassmorphism)] backdrop-blur-xl border border-[var(--glassmorphism-border)] hover:border-teal-400/30 rounded-2xl group transition-all duration-500 hover:shadow-2xl hover:shadow-teal-400/10"
+                        >
+                            <motion.div 
+                                className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-teal-400 to-cyan-400 rounded-2xl flex items-center justify-center text-[var(--primary-foreground)] group-hover:shadow-lg group-hover:shadow-teal-400/25 transition-all duration-300"
+                                whileHover={{ rotate: 360 }}
+                                transition={{ duration: 0.6 }}
+                            >
                                 {valueIcons[value.title]}
-                            </div>
-                            <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                            <p className="text-muted-foreground">{value.description}</p>
-                        </ScrollAnimator>
+                            </motion.div>
+                            <h3 className="text-lg font-bold mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
+                                {value.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                                {value.description}
+                            </p>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
