@@ -46,7 +46,7 @@ export function SolutionCarousel() {
     };
 
     return (
-        <section ref={ref} className="py-20 sm:py-32 relative overflow-hidden">
+        <section ref={ref} className="section-spacing relative overflow-hidden">
             {/* Modern background with gradient mesh */}
             <div className="absolute inset-0 bg-[var(--gradient-background)]" />
             

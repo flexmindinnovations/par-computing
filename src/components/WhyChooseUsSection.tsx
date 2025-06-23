@@ -43,8 +43,7 @@ const WhyChooseUsSection = () => {
         },
     };
 
-    return (
-        <section ref={ref} className="py-20 sm:py-32 relative overflow-hidden">
+    return (        <section ref={ref} className="section-spacing relative overflow-hidden">
             {/* Modern gradient background */}
             <div className="absolute inset-0 bg-[var(--gradient-background)]" />
             
@@ -74,7 +73,7 @@ const WhyChooseUsSection = () => {
                         ease: "easeInOut",
                     }}
                 />
-            </div>            <div className="container mx-auto px-4 relative z-10">
+            </div>            <div className="container mx-auto container-spacing relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

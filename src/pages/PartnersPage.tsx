@@ -133,7 +133,7 @@ export default function PartnersPage() {
             />
 
             {/* Partnership Benefits */}
-            <section ref={benefitsRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={benefitsRef} className="relative w-full section-spacing overflow-hidden">
                 {/* Consistent background with gradient and floating decorations */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
@@ -153,7 +153,7 @@ export default function PartnersPage() {
                     </div>
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isBenefitsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -214,7 +214,7 @@ export default function PartnersPage() {
             </section>
 
             {/* Partner Categories */}
-            <section ref={partnersRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={partnersRef} className="relative w-full section-spacing overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                     <div className="absolute inset-0">
@@ -233,7 +233,7 @@ export default function PartnersPage() {
                     </div>
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isPartnersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -324,7 +324,7 @@ export default function PartnersPage() {
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    <Button className="btn-gradient px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-teal-400/25 transition-all duration-300">
+                                    <Button className="btn-gradient btn-spacing-lg text-lg font-semibold shadow-lg hover:shadow-teal-400/25 transition-all duration-300">
                                         Partner With Us
                                     </Button>
                                 </motion.div>

@@ -63,7 +63,7 @@ export default function SolutionPage() {
             />
             
             {/* Solutions Grid Section */}
-            <section ref={solutionsRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={solutionsRef} className="relative w-full section-spacing overflow-hidden">
                 {/* Background with floating decorations */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
@@ -73,7 +73,7 @@ export default function SolutionPage() {
                     <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isSolutionsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -158,7 +158,7 @@ export default function SolutionPage() {
             </section>
 
             {/* Benefits Section */}
-            <section ref={benefitsRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={benefitsRef} className="relative w-full section-spacing overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                     
@@ -167,7 +167,7 @@ export default function SolutionPage() {
                     <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isBenefitsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -211,7 +211,7 @@ export default function SolutionPage() {
                                     <motion.button
                                         whileHover={{ scale: 1.05, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-teal-400/25 transition-all duration-300"
+                                        className="btn-gradient btn-spacing-lg rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-teal-400/25 transition-all duration-300"
                                     >
                                         Get Started Today
                                     </motion.button>

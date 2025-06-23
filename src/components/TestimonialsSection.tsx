@@ -17,7 +17,7 @@ export function TestimonialsSection() {
   );
 
   return (
-    <section className="relative w-full py-20 sm:py-32 overflow-hidden">
+    <section className="relative w-full section-spacing overflow-hidden">
       {/* Background gradient - consistent with other sections */}
       <div className="absolute inset-0 bg-[var(--gradient-background)]" />
       
@@ -25,7 +25,7 @@ export function TestimonialsSection() {
       <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-xl" />
       <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
       
-      <div className="container px-4 md:px-6 mx-auto relative z-10">        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+      <div className="container container-spacing mx-auto relative z-10">        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-relaxed text-[var(--foreground)]">What Our <span className="gradient-text inline-block px-1">Clients</span> Say</h2>
             <p className="max-w-[900px] text-[var(--muted-foreground)] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

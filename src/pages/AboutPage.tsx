@@ -69,7 +69,7 @@ export default function AboutPage() {
             />
             
             {/* About Section */}
-            <section ref={aboutRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={aboutRef} className="relative w-full section-spacing overflow-hidden">
                 {/* Consistent background with gradient and floating decorations */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
@@ -80,7 +80,7 @@ export default function AboutPage() {
                     <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isAboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -104,7 +104,7 @@ export default function AboutPage() {
             </section>
 
             {/* Core Values Section */}
-            <section ref={valuesRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={valuesRef} className="relative w-full section-spacing overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                     
@@ -113,7 +113,7 @@ export default function AboutPage() {
                     <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isValuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -174,7 +174,7 @@ export default function AboutPage() {
             </section>
 
             {/* Why Choose Us Section */}
-            <section ref={whyChooseRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section ref={whyChooseRef} className="relative w-full section-spacing overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                     
@@ -183,7 +183,7 @@ export default function AboutPage() {
                     <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="container mx-auto container-spacing relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isWhyChooseInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

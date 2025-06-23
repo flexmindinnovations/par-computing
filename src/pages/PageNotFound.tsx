@@ -20,7 +20,7 @@ export default function PageNotFound() {
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="relative min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16">
+            <div className="relative min-h-screen flex items-center justify-center container-spacing-lg section-spacing-sm">
                 <motion.div 
                     className="w-full max-w-2xl text-center"
                     initial={{ opacity: 0, y: 20 }}
@@ -90,17 +90,16 @@ export default function PageNotFound() {
                             >
                                 <Button 
                                     asChild
-                                    className="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
+                                    className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
                                 >
                                     <Link to="/">
                                         <Home className="mr-2 w-4 h-4" />
                                         Go to Homepage
                                     </Link>
-                                </Button>
-                                <Button 
+                                </Button>                                <Button 
                                     variant="outline" 
                                     onClick={() => window.history.back()}
-                                    className="px-8 py-3 border-primary/50 hover:bg-primary/10"
+                                    className="btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm"
                                 >
                                     <ArrowLeft className="mr-2 w-4 h-4" />
                                     Go Back

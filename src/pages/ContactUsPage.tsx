@@ -101,7 +101,7 @@ export default function ContactUsPage() {
 			/>
 			
 			{/* Contact Information Section */}
-			<section ref={contactRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+			<section ref={contactRef} className="relative w-full section-spacing overflow-hidden">
 				{/* Background with floating decorations */}
 				<div className="absolute inset-0 z-0">
 					<div className="absolute inset-0 bg-[var(--gradient-background)]" />
@@ -121,7 +121,7 @@ export default function ContactUsPage() {
 					</div>
 				</div>
 
-				<div className="container mx-auto px-4 md:px-6 relative z-10">
+				<div className="container mx-auto container-spacing relative z-10">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -212,7 +212,7 @@ export default function ContactUsPage() {
 			</section>
 
 			{/* Contact Form Section */}
-			<section ref={formRef} className="relative w-full py-20 sm:py-32 overflow-hidden">
+			<section ref={formRef} className="relative w-full section-spacing overflow-hidden">
 				<div className="absolute inset-0 z-0">
 					<div className="absolute inset-0 bg-[var(--gradient-background)]" />
 					<div className="absolute inset-0">
@@ -231,7 +231,7 @@ export default function ContactUsPage() {
 					</div>
 				</div>
 
-				<div className="container mx-auto px-4 md:px-6 relative z-10">
+				<div className="container mx-auto container-spacing relative z-10">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

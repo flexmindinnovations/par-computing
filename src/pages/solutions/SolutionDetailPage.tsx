@@ -83,7 +83,7 @@ export default function SolutionDetailPage() {
             />
 
             {/* Solution Overview */}
-            <section className="relative px-4 md:px-8 lg:px-16 py-12 md:py-16">
+            <section className="relative container-spacing-lg section-spacing-sm">
               <div className="max-w-4xl mx-auto">
                 <motion.div 
                   className="text-center mb-12"
@@ -165,7 +165,7 @@ export default function SolutionDetailPage() {
             </section>
 
             {/* Key Benefits */}
-            <section className="relative px-4 md:px-8 lg:px-16 py-12 md:py-16">
+            <section className="relative container-spacing-lg section-spacing-sm">
               <div className="max-w-6xl mx-auto">
                 <motion.div 
                   className="text-center mb-12"
@@ -225,7 +225,7 @@ export default function SolutionDetailPage() {
             </section>
 
             {/* Implementation Process */}
-            <section className="relative px-4 md:px-8 lg:px-16 py-12 md:py-16">
+            <section className="relative container-spacing-lg section-spacing-sm">
               <div className="max-w-6xl mx-auto">
                 <motion.div 
                   className="text-center mb-12"
@@ -285,7 +285,7 @@ export default function SolutionDetailPage() {
             </section>
 
             {/* Call to Action */}
-            <section className="relative px-4 md:px-8 lg:px-16 py-16 md:py-24">
+            <section className="relative container-spacing-lg section-spacing-lg">
               <div className="max-w-4xl mx-auto text-center">
                 <motion.div 
                   className="relative overflow-hidden rounded-3xl p-8 md:p-12 backdrop-blur-md shadow-2xl border border-white/10"
@@ -303,11 +303,11 @@ export default function SolutionDetailPage() {
                       Let's discuss how {solution.name} can transform your business operations and drive growth.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                      <Button className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
                         Schedule Consultation
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
-                      <Button variant="outline" className="px-8 py-3 border-primary/50 hover:bg-primary/10">
+                      <Button variant="outline" className="btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm">
                         Learn More
                       </Button>
                     </div>

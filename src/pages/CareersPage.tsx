@@ -96,7 +96,7 @@ export default function CareersPage() {
             />
 
             {/* Why Work With Us Section */}
-            <section className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section className="relative w-full section-spacing overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                 
@@ -105,7 +105,7 @@ export default function CareersPage() {
                 <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
               </div>
               
-              <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+              <div className="max-w-6xl mx-auto container-spacing relative z-10">
                 <motion.div 
                   className="text-center mb-12"
                   initial={{ opacity: 0, y: 20 }}
@@ -164,7 +164,7 @@ export default function CareersPage() {
             </section>
 
             {/* Job Openings Section */}
-            <section className="relative w-full py-20 sm:py-32 overflow-hidden">
+            <section className="relative w-full section-spacing overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[var(--gradient-background)]" />
                 
@@ -173,7 +173,7 @@ export default function CareersPage() {
                 <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
               </div>
               
-              <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+              <div className="max-w-4xl mx-auto container-spacing relative z-10">
                 <motion.div 
                   className="text-center mb-12"
                   initial={{ opacity: 0, y: 20 }}
@@ -260,11 +260,21 @@ export default function CareersPage() {
                           </div>
                           
                           <div className="lg:ml-6">
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                              <Button className="w-full lg:w-auto px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity shadow-lg hover:shadow-primary/25">
-                                Apply Now
-                              </Button>
-                            </motion.div>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                                <Button className="w-full sm:w-auto btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity shadow-lg hover:shadow-primary/25">
+                                  Apply Now
+                                </Button>
+                              </motion.div>
+                              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                                <Button 
+                                  variant="outline" 
+                                  className="w-full sm:w-auto btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm"
+                                >
+                                  View Details
+                                </Button>
+                              </motion.div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -276,7 +286,7 @@ export default function CareersPage() {
             </section>
 
             {/* Call to Action */}
-            <section className="relative px-4 md:px-8 lg:px-16 py-16 md:py-24">
+            <section className="relative container-spacing-lg section-spacing-lg">
               <div className="max-w-4xl mx-auto text-center">
                 <motion.div 
                   className="relative overflow-hidden rounded-3xl p-8 md:p-12 backdrop-blur-md shadow-2xl border border-white/10"
@@ -293,7 +303,7 @@ export default function CareersPage() {
                     <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                       We're always looking for talented individuals. Send us your resume and let us know how you'd like to contribute to our mission.
                     </p>
-                    <Button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                    <Button className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
                       Send Your Resume
                     </Button>
                   </div>

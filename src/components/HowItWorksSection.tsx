@@ -60,7 +60,7 @@ const HowItWorksSection = () => {
     };
 
     return (
-        <section ref={ref} className="py-20 sm:py-32 relative overflow-hidden">
+        <section ref={ref} className="section-spacing relative overflow-hidden">
             {/* Dynamic gradient background */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-900/5 via-purple-900/5 to-orange-900/5" />

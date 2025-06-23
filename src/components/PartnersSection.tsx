@@ -21,7 +21,7 @@ const partners = [
 
 const PartnersSection = () => {
     return (
-        <section className="relative w-full py-20 sm:py-32 overflow-hidden">
+        <section className="relative w-full section-spacing overflow-hidden">
             {/* Background gradient - consistent with other sections */}
             <div className="absolute inset-0 bg-[var(--gradient-background)]" />
             

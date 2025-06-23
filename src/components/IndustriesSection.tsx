@@ -46,7 +46,7 @@ const IndustriesSection = () => {
     };
 
     return (
-        <section ref={ref} className="relative py-20 sm:py-32 overflow-hidden w-full">
+        <section ref={ref} className="relative section-spacing overflow-hidden w-full">
             {/* Consistent background with gradient and floating decorations */}
             <div className="absolute inset-0 z-0">
                 {/* Gradient background */}

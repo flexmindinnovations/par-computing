@@ -15,7 +15,7 @@ export default function Footer() {
     const logoSrc = theme === 'dark' ? whiteLogo : LogoLight;
     return (
         <footer className="bg-card/60 border-t border-border mt-16 w-full">
-            <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto section-spacing-sm container-spacing-lg">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
                     {/* Logo and description */}
                     <div className="lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">

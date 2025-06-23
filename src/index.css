@@ -2,45 +2,45 @@
 
 :root {
   --radius: 0.75rem;
-  /* Modern 2025 Light Theme - Vibrant & Fresh */
+  /* Modern 2025 Light Theme - Enhanced Contrast */
   --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.8);
+  --card: rgba(255, 255, 255, 0.95);
   --card-foreground: #1e293b;
-  --popover: rgba(255, 255, 255, 0.95);
+  --popover: rgba(255, 255, 255, 0.98);
   --popover-foreground: #0f172a;
   --primary: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
   --primary-foreground: #ffffff;
   --secondary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
   --secondary-foreground: #ffffff;
-  --muted: rgba(241, 245, 249, 0.8);
-  --muted-foreground: #64748b;
+  --muted: rgba(241, 245, 249, 0.9);
+  --muted-foreground: #475569;
   --accent: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: rgba(226, 232, 240, 0.6);
-  --input: rgba(255, 255, 255, 0.7);
+  --border: rgba(226, 232, 240, 0.8);
+  --input: rgba(255, 255, 255, 0.9);
   --ring: #14b8a6;
   --chart-1: #14b8a6;
   --chart-2: #06b6d4;
   --chart-3: #8b5cf6;
   --chart-4: #f97316;
   --chart-5: #ec4899;
-  --sidebar: rgba(255, 255, 255, 0.9);
+  --sidebar: rgba(255, 255, 255, 0.95);
   --sidebar-foreground: #0f172a;
   --sidebar-primary: #14b8a6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: rgba(244, 244, 245, 0.8);
+  --sidebar-accent: rgba(244, 244, 245, 0.9);
   --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: rgba(226, 232, 240, 0.4);
+  --sidebar-border: rgba(226, 232, 240, 0.6);
   --sidebar-ring: #14b8a6;
   --dot-bg: #f8fafc;
   --dot-color: rgba(20, 184, 166, 0.1);
   /* Modern gradient variables */  --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #8b5cf6 100%);
   --gradient-secondary: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
   --gradient-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --glassmorphism: rgba(255, 255, 255, 0.3);
-  --glassmorphism-border: rgba(255, 255, 255, 0.4);
+  --glassmorphism: rgba(255, 255, 255, 0.4);
+  --glassmorphism-border: rgba(255, 255, 255, 0.6);
 }
 
 .dark {
@@ -252,6 +252,85 @@ body {
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
+}
+
+/* Global Section Spacing Classes */
+.section-spacing {
+  padding-top: 5rem; /* py-20 */
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+  .section-spacing {
+    padding-top: 5rem; /* sm:py-32 */
+    padding-bottom: 5rem;
+  }
+}
+
+.section-spacing-sm {
+  padding-top: 3rem; /* py-12 */
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing-sm {
+    padding-top: 4rem; /* md:py-16 */
+    padding-bottom: 4rem;
+  }
+}
+
+.section-spacing-lg {
+  padding-top: 6rem; /* py-24 */
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 640px) {
+  .section-spacing-lg {
+    padding-top: 5rem; /* sm:py-40 */
+    padding-bottom: 5rem;
+  }
+}
+
+/* Container horizontal spacing */
+.container-spacing {
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-spacing {
+    padding-left: 1.5rem; /* md:px-6 */
+    padding-right: 1.5rem;
+  }
+}
+
+/* Extended container spacing for larger sections */
+.container-spacing-lg {
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-spacing-lg {
+    padding-left: 2rem; /* md:px-8 */
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-spacing-lg {
+    padding-left: 4rem; /* lg:px-16 */
+    padding-right: 4rem;
+  }
+}
+
+/* Button spacing classes */
+.btn-spacing {
+  padding: 0.75rem 2rem; /* py-3 px-8 */
+}
+
+.btn-spacing-lg {
+  padding: 1rem 2rem; /* py-4 px-8 */
 }
 
 /* Custom Scrollbar - Modern 2025 Design */
