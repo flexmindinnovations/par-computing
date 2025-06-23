@@ -113,7 +113,7 @@ const AboutSection = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-teal-400/25 transition-all duration-300 flex items-center gap-2 group"
+                                className="btn-primary rounded-xl text-lg flex items-center gap-2 group"
                             >
                                 Learn More About Us
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

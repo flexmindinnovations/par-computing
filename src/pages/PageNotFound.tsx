@@ -9,20 +9,19 @@ const emojiFavicon = (emoji: string) => `data:image/svg+xml,<svg xmlns=%22http:/
 
 export default function PageNotFound() {
     return (
-        <AnimatedPage>
-            <PageMetadata title="Page Not Found | PAR Computing" faviconHref={emojiFavicon('🔍')} />
-            
-            {/* Background with floating decorations */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute inset-0" style={{ background: 'var(--gradient-background)' }}></div>
-              <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-32 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
-            </div>
+        <AnimatedPage>            <PageMetadata title="Page Not Found | PAR Computing" faviconHref={emojiFavicon('🔍')} />
 
             <div className="relative min-h-screen flex items-center justify-center container-spacing-lg section-spacing-sm">
+                {/* Background with floating decorations */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                  <div className="absolute inset-0" style={{ background: 'var(--gradient-background)' }}></div>
+                  <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-32 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+                </div>
+
                 <motion.div 
-                    className="w-full max-w-2xl text-center"
+                    className="w-full max-w-2xl text-center relative z-10"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -87,10 +86,9 @@ export default function PageNotFound() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 1.0 }}
-                            >
-                                <Button 
+                            >                                <Button 
                                     asChild
-                                    className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
+                                    className="btn-primary"
                                 >
                                     <Link to="/">
                                         <Home className="mr-2 w-4 h-4" />
@@ -99,7 +97,7 @@ export default function PageNotFound() {
                                 </Button>                                <Button 
                                     variant="outline" 
                                     onClick={() => window.history.back()}
-                                    className="btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm"
+                                    className="btn-secondary"
                                 >
                                     <ArrowLeft className="mr-2 w-4 h-4" />
                                     Go Back

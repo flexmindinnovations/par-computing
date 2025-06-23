@@ -35,12 +35,11 @@
   --sidebar-border: rgba(226, 232, 240, 0.6);
   --sidebar-ring: #14b8a6;
   --dot-bg: #f8fafc;
-  --dot-color: rgba(20, 184, 166, 0.1);
-  /* Modern gradient variables */  --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #8b5cf6 100%);
+  --dot-color: rgba(20, 184, 166, 0.1);  /* Modern gradient variables */  --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #8b5cf6 100%);
   --gradient-secondary: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
   --gradient-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --glassmorphism: rgba(255, 255, 255, 0.4);
-  --glassmorphism-border: rgba(255, 255, 255, 0.6);
+  --glassmorphism: rgba(255, 255, 255, 0.7);
+  --glassmorphism-border: rgba(226, 232, 240, 0.8);
 }
 
 .dark {
@@ -331,6 +330,55 @@ body {
 
 .btn-spacing-lg {
   padding: 1rem 2rem; /* py-4 px-8 */
+}
+
+/* Global Button Classes */
+.btn-primary {
+  width: 100%;
+  padding: 1rem 2rem; /* py-4 px-8 */
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 0.75rem;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 20px 25px -5px rgba(20, 184, 166, 0.25), 0 10px 10px -5px rgba(20, 184, 166, 0.1);
+  opacity: 0.9;
+}
+
+@media (min-width: 640px) {
+  .btn-primary {
+    width: auto;
+  }
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 1rem 2rem; /* py-4 px-8 */
+  background: var(--glassmorphism);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glassmorphism-border);
+  color: var(--foreground);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--glassmorphism);
+  border-color: rgba(20, 184, 166, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+  .btn-secondary {
+    width: auto;
+  }
 }
 
 /* Custom Scrollbar - Modern 2025 Design */

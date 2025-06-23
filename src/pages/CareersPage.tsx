@@ -79,15 +79,6 @@ export default function CareersPage() {
     return (
         <AnimatedPage>
             <PageMetadata title="Careers | PAR Computing" faviconHref={emojiFavicon('💼')} />
-            
-            {/* Background with floating decorations */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute inset-0" style={{ background: 'var(--gradient-background)' }}></div>
-              <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-32 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute top-1/3 right-1/3 w-48 h-48 bg-primary/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }}></div>
-            </div>
 
             <PageHero
                 title="Join Our Team"
@@ -262,15 +253,12 @@ export default function CareersPage() {
                           <div className="lg:ml-6">
                             <div className="flex flex-col sm:flex-row gap-4">
                               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                                <Button className="w-full sm:w-auto btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity shadow-lg hover:shadow-primary/25">
+                                <Button className="btn-primary">
                                   Apply Now
                                 </Button>
                               </motion.div>
                               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                                <Button 
-                                  variant="outline" 
-                                  className="w-full sm:w-auto btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm"
-                                >
+                                <Button className="btn-secondary">
                                   View Details
                                 </Button>
                               </motion.div>
@@ -303,7 +291,7 @@ export default function CareersPage() {
                     <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                       We're always looking for talented individuals. Send us your resume and let us know how you'd like to contribute to our mission.
                     </p>
-                    <Button className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                    <Button className="btn-primary">
                       Send Your Resume
                     </Button>
                   </div>

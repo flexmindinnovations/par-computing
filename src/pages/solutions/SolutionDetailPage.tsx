@@ -66,15 +66,6 @@ export default function SolutionDetailPage() {
     return (
         <AnimatedPage>
             <PageMetadata title={`${solution.name} | PAR Computing`} faviconHref={emojiFavicon('💡')} />
-            
-            {/* Background with floating decorations */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute inset-0" style={{ background: 'var(--gradient-background)' }}></div>
-              <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-32 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute top-1/3 right-1/3 w-48 h-48 bg-primary/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }}></div>
-            </div>
 
             <PageHero
                 title={solution.name}
@@ -84,7 +75,12 @@ export default function SolutionDetailPage() {
 
             {/* Solution Overview */}
             <section className="relative container-spacing-lg section-spacing-sm">
-              <div className="max-w-4xl mx-auto">
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[var(--gradient-background)]" />
+                <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-xl" />
+                <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
+              </div>
+              <div className="max-w-4xl mx-auto relative z-10">
                 <motion.div 
                   className="text-center mb-12"
                   initial={{ opacity: 0, y: 20 }}
@@ -166,7 +162,12 @@ export default function SolutionDetailPage() {
 
             {/* Key Benefits */}
             <section className="relative container-spacing-lg section-spacing-sm">
-              <div className="max-w-6xl mx-auto">
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[var(--gradient-background)]" />
+                <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
+                <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-xl" />
+              </div>
+              <div className="max-w-6xl mx-auto relative z-10">
                 <motion.div 
                   className="text-center mb-12"
                   initial={{ opacity: 0, y: 20 }}
@@ -226,7 +227,12 @@ export default function SolutionDetailPage() {
 
             {/* Implementation Process */}
             <section className="relative container-spacing-lg section-spacing-sm">
-              <div className="max-w-6xl mx-auto">
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[var(--gradient-background)]" />
+                <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
+                <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-xl" />
+              </div>
+              <div className="max-w-6xl mx-auto relative z-10">
                 <motion.div 
                   className="text-center mb-12"
                   initial={{ opacity: 0, y: 20 }}
@@ -286,7 +292,12 @@ export default function SolutionDetailPage() {
 
             {/* Call to Action */}
             <section className="relative container-spacing-lg section-spacing-lg">
-              <div className="max-w-4xl mx-auto text-center">
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[var(--gradient-background)]" />
+                <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-xl" />
+                <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl" />
+              </div>
+              <div className="max-w-4xl mx-auto text-center relative z-10">
                 <motion.div 
                   className="relative overflow-hidden rounded-3xl p-8 md:p-12 backdrop-blur-md shadow-2xl border border-white/10"
                   style={{ background: 'var(--glassmorphism)' }}
@@ -303,11 +314,11 @@ export default function SolutionDetailPage() {
                       Let's discuss how {solution.name} can transform your business operations and drive growth.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button className="btn-spacing bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                      <Button className="btn-primary">
                         Schedule Consultation
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
-                      <Button variant="outline" className="btn-spacing glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] bg-[var(--glassmorphism)]/30 backdrop-blur-sm">
+                      <Button className="btn-secondary">
                         Learn More
                       </Button>
                     </div>

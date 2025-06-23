@@ -146,11 +146,10 @@ const HeroSection = () => {
                                             <motion.div
                                                 whileHover={{ scale: 1.05, y: -2 }}
                                                 whileTap={{ scale: 0.98 }}
-                                            >
-                                                <Button 
+                                            >                                                <Button 
                                                     asChild 
                                                     size="lg" 
-                                                    className="btn-gradient px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-teal-400/25"
+                                                    className="btn-primary text-lg"
                                                 >
                                                     <Link to={slide.buttonLink}>{slide.buttonText}</Link>
                                                 </Button>
@@ -161,10 +160,8 @@ const HeroSection = () => {
                                                 whileTap={{ scale: 0.98 }}
                                             >
                                                 <Button 
-                                                    variant="outline" 
-                                                    size="lg"
-                                                    className="glass border-[var(--glassmorphism-border)] text-[var(--foreground)] hover:bg-[var(--glassmorphism)] px-8 py-4"
                                                     asChild
+                                                    className="btn-secondary"
                                                 >
                                                     <Link to="/about">Learn More</Link>
                                                 </Button>

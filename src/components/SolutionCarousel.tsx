@@ -192,7 +192,7 @@ export function SolutionCarousel() {
                     <motion.button
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                        className="btn-primary rounded-xl text-lg"
                     >
                         View All Solutions
                     </motion.button>

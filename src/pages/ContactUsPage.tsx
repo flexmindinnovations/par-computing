@@ -301,7 +301,7 @@ export default function ContactUsPage() {
 									>
 										<Button 
 											type="submit" 
-											className="w-full btn-gradient py-4 text-lg font-semibold shadow-lg hover:shadow-teal-400/25 transition-all duration-300"
+											className="btn-primary text-lg"
 										>
 											<Send className="w-5 h-5 mr-2" />
 											Send Message

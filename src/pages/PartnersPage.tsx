@@ -324,7 +324,7 @@ export default function PartnersPage() {
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    <Button className="btn-gradient btn-spacing-lg text-lg font-semibold shadow-lg hover:shadow-teal-400/25 transition-all duration-300">
+                                    <Button className="btn-primary text-lg">
                                         Partner With Us
                                     </Button>
                                 </motion.div>
