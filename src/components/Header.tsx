@@ -23,7 +23,7 @@ const navLinks = [
     { label: "Solutions", href: "/solution", icon: Layers3Icon },
     { label: "Industries", href: "/industries", icon: Building2Icon },
     { label: "Partners", href: "/partners", icon: UsersIcon },
-    { label: "Careers", href: "/careers", icon: BriefcaseIcon },
+    // { label: "Careers", href: "/careers", icon: BriefcaseIcon },
     { label: "Contact", href: "/contact", icon: MailIcon },
 ];
 
