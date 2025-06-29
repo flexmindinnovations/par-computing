@@ -212,16 +212,20 @@ function NavLink({ to, children, className, isContact }: { to: string; children:
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  // Custom logic for contact link color
+  const isHome = location.pathname === '/';
+  const contactClass = isContact && isHome && !isScrolled
+    ? 'text-white'
+    : isContact
+      ? 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
+      : '';
   return (
     <Link to={to}>
       <motion.div
         className={`relative px-3 py-2 rounded-full transition-colors duration-200 font-medium overflow-hidden
           ${isActive 
-            ? 'text-white bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg'
-            : isContact && !isScrolled
-            ? 'text-white hover:text-black backdrop-blur-none'
-            : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'}
-          ${!isScrolled ? 'backdrop-blur-md' : ''}
+            ? 'text-white bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] shadow-lg'
+            : contactClass || 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'}
           ${className || ''}
         `}
         whileHover={{ scale: 1.05 }}
@@ -230,7 +234,7 @@ function NavLink({ to, children, className, isContact }: { to: string; children:
         {children}
         {isActive && (
           <motion.div
-            className={`absolute inset-0 rounded-full -z-10 bg-gradient-to-r from-cyan-500/80 to-blue-500/80`}
+            className={`absolute inset-0 rounded-full -z-10 bg-gradient-to-r from-[var(--primary)]/80 to-[var(--secondary)]/80`}
             layoutId="activeTab"
             initial={false}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}

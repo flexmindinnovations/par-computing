@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { heroSlides } from "@/lib/home-page-data";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from "@/utils/cn";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import type { CarouselApi } from "@/components/ui/carousel";
@@ -71,6 +71,41 @@ const HeroImageSkeleton = () => (
         />
     </div>
 );
+
+// Animation variants for heading and words
+const headingVariants = {
+    hidden: { opacity: 0, y: -40 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.2
+        }
+    },
+    exit: { opacity: 0, y: 40, transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+};
+const wordVariants = {
+    hidden: { opacity: 0, y: -40, scale: 0.95 },
+    visible: (i: number) => ({
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.6,
+            delay: i * 0.08
+        }
+    }),
+    exit: (i: number) => ({
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+        transition: {
+            duration: 0.4,
+            delay: i * 0.06
+        }
+    })
+};
 
 const HeroSection = () => {
     const [api, setApi] = useState<CarouselApi>();
@@ -186,35 +221,27 @@ const HeroSection = () => {
                                         className="space-y-6"
                                         key={`text-${index}`}
                                     >
-                                        <motion.h1
-                                            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-extrabold tracking-tight leading-[1.1] antialiased"
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{
-                                                opacity: current === index ? 1 : 0,
-                                                y: current === index ? 0 : 20
-                                            }}
-                                            transition={{ duration: 0.6, delay: current === index ? 0.2 : 0, ease: [0.25, 0.1, 0.25, 1] }}
-                                        >
-                                            {slide.title.split(' ').map((word, i) => (
-                                                <motion.span
-                                                    key={i}
-                                                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                                                    animate={{
-                                                        opacity: current === index ? 1 : 0,
-                                                        y: current === index ? 0 : 20,
-                                                        scale: current === index ? 1 : 0.95
-                                                    }}
-                                                    transition={{
-                                                        duration: 0.5,
-                                                        delay: current === index ? 0.3 + i * 0.08 : 0,
-                                                        ease: [0.25, 0.46, 0.45, 0.94]
-                                                    }}
-                                                    className="inline-block mr-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent"
-                                                >
-                                                    {word}
-                                                </motion.span>
-                                            ))}
-                                        </motion.h1>
+                                        <AnimatePresence mode="wait">
+                                            <motion.h1
+                                                key={current}
+                                                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-extrabold tracking-tight leading-[1.1] antialiased"
+                                                variants={headingVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                                exit="exit"
+                                            >
+                                                {slide.title.split(' ').map((word, i) => (
+                                                    <motion.span
+                                                        key={word + i}
+                                                        className="inline-block mr-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent"
+                                                        variants={wordVariants}
+                                                        custom={i}
+                                                    >
+                                                        {word}
+                                                    </motion.span>
+                                                ))}
+                                            </motion.h1>
+                                        </AnimatePresence>
                                         <motion.p
                                             className="max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl font-body text-[var(--muted-foreground)] leading-relaxed antialiased"
                                             initial={{ opacity: 0, y: 25, scale: 0.95 }}
@@ -337,7 +364,7 @@ const HeroSection = () => {
                                             }}
                                             loading="lazy"
                                         />
-                                        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/80 via-black/60 to-transparent" />
                                     </div>
                                 </div>
                             </div>
